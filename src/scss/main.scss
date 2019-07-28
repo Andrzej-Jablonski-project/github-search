@@ -1,16 +1,148 @@
 @import "_normalize";
 @import "_variables";
-
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
 
 html {
   box-sizing: border-box;
 }
 
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 
 body {
+  display: grid;
+  grid-template-areas: "header""content";
+  grid-template-rows: 80px 1fr;
   color: $yellow;
-  background: $violet;
+  background: #181D27;
+  font-family: 'Roboto', sans-serif;
+}
+
+.head {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  grid-area: header;
+  padding: 16px;
+
+  &__header {
+    order: 1;
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: white;
+  }
+
+  &__home {
+    width: 32px;
+    margin: 0 1.875rem 0 0;
+  }
+
+  &__github-icon {
+    color: white;
+  }
+}
+
+.repos {
+  grid-area: content;
+  padding: 16px;
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 700px;
+  margin: 0 auto 30px auto;
+  background: #254D32;
+  border-radius: 30px;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 16px;
+    padding: 0;
+    background: #181D27;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    transition: transform .2s linear;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__name {
+    width: 90%;
+    margin: 12px 0 12px 24px;
+    padding: 8px;
+    font-size: 1.125rem;
+    color: #D0DB97;
+    background: transparent;
+    border: none;
+
+    &::placeholder {
+      color: #D0DB97;
+    }
+
+    &-icon {
+      width: 1rem;
+      color: white;
+    }
+  }
+}
+
+.repos-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 700px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #3A7D44;
+  border-radius: 30px;
+
+  &__header {
+    display: flex;
+    width: 100%;
+  }
+
+  &__avatar {
+    width: 140px;
+    height: 140px;
+    background: yellowgreen;
+  }
+
+  &__name {
+    width: 480px;
+    margin: 0 0 100px 16px;
+    font-size: 1.25rem;
+    color: white;
+    padding: 16px;
+    border-bottom: 1px solid white;
+  }
+
+  &__filter {
+    width: 100%;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    padding: 0;
+    grid-gap: 16px;
+    list-style: none;
+  }
+
+  &__link {
+    color: white;
+    font-size: 1.25rem;
+  }
 }
