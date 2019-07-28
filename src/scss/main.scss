@@ -2,6 +2,16 @@
 @import "_variables";
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap&subset=latin-ext');
 
+@keyframes shake {
+  from {
+    transform: translateX(10px);
+  }
+
+  to {
+    transform: translateX(-10px);
+  }
+}
+
 html {
   box-sizing: border-box;
 }
@@ -107,6 +117,7 @@ body {
   padding: 32px;
   background: #3A7D44;
   border-radius: 30px;
+  opacity: 0;
 
   &__header {
     display: flex;
@@ -145,4 +156,8 @@ body {
     color: white;
     font-size: 1.25rem;
   }
+}
+
+.shake {
+  animation: shake .08s linear alternate infinite;
 }
