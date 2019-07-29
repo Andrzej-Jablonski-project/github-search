@@ -22,7 +22,7 @@ const searchButton = document.querySelector('.search__button--js');
 const reposBox = document.querySelector('.repos-box-js');
 const repoList = document.querySelector('.repos-box__list--js');
 const avatar = document.querySelector('.repos-box__header--js');
-const repoName = document.querySelector('.repos-box__name--js');
+const repoFilter = document.querySelector('.repos-box__filter--js');
 
 const shake = () => {
   searchBox.classList.add('shake');
@@ -36,11 +36,16 @@ searchButton.addEventListener('click', e => {
       .then(resp => resp.json())
       .then(resp => {
         console.log(resp);
+        const repos = resp;
         avatar.innerHTML = '';
-        avatar.innerHTML += `<img src="${resp[0].owner.avatar_url}" alt="Obrazek ${resp[0].owner.login}." class="repos-box__avatar"> <h2 class="repos-box__name">${resp[0].owner.login}</h2>`;
+        avatar.innerHTML += `<img src="${repos[0].owner.avatar_url}" alt="Obrazek ${repos[0].owner.login}." class="repos-box__avatar"> <h2 class="repos-box__name">${repos[0].owner.login}</h2>`;
         repoList.innerHTML = '';
-        for (const repos of resp) {
-          repoList.innerHTML += `<li class="repos-box__item"><a href="${repos.html_url}" class="repos-box__link">${repos.name}</a></li>`
+        for (const repo of repos) {
+          const {
+            html_url,
+            name
+          } = repo;
+          repoList.innerHTML += `<li class="repos-box__item repos-box__item--js"><a href="${html_url}" class="repos-box__link repos-box__link--js">${name}</a></li>`
         }
         reposBox.style.opacity = "1";
       })
@@ -53,4 +58,16 @@ searchButton.addEventListener('click', e => {
     searchBox.classList.add('shake');
     shake();
   }
+})
+//filter
+repoFilter.addEventListener('input', e => {
+  const repoItems = [...document.querySelectorAll('.repos-box__item--js')];
+
+  repoItems.forEach(repoItem => {
+    if (repoItem.innerText.toLowerCase().includes(e.target.value.toLowerCase())) {
+      repoItem.style.display = 'list-item';
+    } else {
+      repoItem.style.display = 'none';
+    }
+  })
 })
