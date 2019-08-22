@@ -1,4 +1,4 @@
-# Notatnik frontendu
+# Github search
 ![screenshot project](assets/img/cover.png)
 ## Opis projektu
 Wyszukiwarka profili na GitHubie wykorzystująca REST API.
@@ -31,4 +31,4 @@ Wyszukiwarka profili na GitHubie wykorzystująca REST API.
 
 Publikacja strony na github pages `npm run deploy`
 
-[Notatnik Frontendu](https://andrzej-jablonski-project.github.io/github-search/)
+[Github search](https://andrzej-jablonski-project.github.io/github-search/)
