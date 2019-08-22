@@ -30,12 +30,12 @@ const shake = () => {
     searchBox.classList.remove('shake');
   }, 500);
 }
-searchButton.addEventListener('click', e => {
+// function search
+const search = e => {
   if (searchName.value) {
     fetch(`https://api.github.com/users/${searchName.value}/repos`)
       .then(resp => resp.json())
       .then(resp => {
-        console.log(resp);
         const repos = resp;
         avatar.innerHTML = '';
         avatar.innerHTML += `<img src="${repos[0].owner.avatar_url}" alt="Obrazek ${repos[0].owner.login}." class="repos-box__avatar"> <h2 class="repos-box__name">${repos[0].owner.login}</h2>`;
@@ -58,7 +58,7 @@ searchButton.addEventListener('click', e => {
     searchBox.classList.add('shake');
     shake();
   }
-})
+}
 //filter
 repoFilter.addEventListener('input', e => {
   const repoItems = [...document.querySelectorAll('.repos-box__item--js')];
@@ -70,4 +70,9 @@ repoFilter.addEventListener('input', e => {
       repoItem.style.display = 'none';
     }
   })
+})
+
+searchButton.addEventListener('click', search);
+searchName.addEventListener('keyup', e => {
+  e.key === 'Enter' ? search() : '';
 })
