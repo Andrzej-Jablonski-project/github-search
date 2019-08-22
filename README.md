@@ -1,5 +1,5 @@
 # Github search
-![screenshot project](assets/img/cover.png)
+![screenshot project](src/assets/img/cover.png)
 ## Opis projektu
 Wyszukiwarka profili na GitHubie wykorzystująca REST API.
 ## Technologie
